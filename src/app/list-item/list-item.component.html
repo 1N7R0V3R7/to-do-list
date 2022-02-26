@@ -1,0 +1,49 @@
+<div class="grid grid-cols-3 gap-2 my-8">
+    <div class="col-span-2 grid grid-cols-6 items-center">
+        <div class="w-3 h-3 rounded-full my-auto bg-customBlue"></div>
+        <div 
+            class="col-span-5 break-words font-bold decoration-4 text-[1.3rem]" 
+            [ngClass]="{'line-through': todoItem.check}"
+            *ngIf="!updateFlag; else updateInput"
+            (click)="triggerUpdate($event)"
+        >
+            {{ todoItem.task }}
+        </div>
+        <ng-template #updateInput>
+            <input 
+                type="text" 
+                class="rounded-md bg-customYellow focus:outline focus:outline-customYellow focus:ring focus:ring-customYellow w-full col-span-5 break-all"
+                [(ngModel)]="updatedTask"
+                (focus)="getNewTask($event)"
+                (blur)="updateTask($event)"
+                (keydown.enter)="updateTask($event)"
+                autofocus
+            >
+        </ng-template>
+    </div>
+    <div class="col-span-1 flex self-start justify-between xs:justify-evenly my-auto">
+        <button 
+            class="btn" 
+            (click)="checkTask($event)" 
+        >
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6" id="svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" id="path">
+                </path>
+            </svg>
+        </button>
+        <button 
+            class="btn bg-customRed" 
+            (click)="removeTask($event)"
+        >
+            <svg fill="none"
+                viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6" id="svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"
+                    id="path">
+                </path>
+            </svg>
+        </button>
+    </div>
+</div>
+
+

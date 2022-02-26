@@ -1,0 +1,23 @@
+<div class="container mx-auto max-w-lg">
+  <div id="title" class="text-center text-3xl font-bold pb-12">
+    To-Do List
+  </div>
+  <div class="grid grid-cols-3 gap-2">
+    <input 
+      type="text" 
+      class="rounded-md pl-2 shadow-customShadow w-full mr-1 col-span-2 focus:outline focus:outline-customYellow focus:ring focus:ring-customYellow" 
+      [(ngModel)]="newTask"
+      (keydown.enter)="addTodo()"
+    >
+    <button class="addBtn" (click)="addTodo()">Add</button>
+  </div>
+  <app-list-item
+    *ngFor="let todo of TodoList"
+    [todoItem]="todo"
+    (remove)="removeTodo($event)"
+    (check)="updateLocalStorage()"
+    (update)="updateTodo($event)"
+  >
+  </app-list-item>
+  <button class="bg-customRed text-customWhite w-full rounded-md py-1 my-12 shadow-customShadow font-bold" (click)="clearTodo()">Clear All</button>
+</div>

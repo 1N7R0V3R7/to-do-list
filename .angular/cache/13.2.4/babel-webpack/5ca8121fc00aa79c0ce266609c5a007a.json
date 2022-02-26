@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class ToDo {\n  constructor(task, check) {\n    this.task = task;\n    this.check = check;\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}
